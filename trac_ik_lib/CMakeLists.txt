@@ -38,7 +38,7 @@ ament_target_dependencies(trac_ik
 )
 
 target_link_libraries(trac_ik
-  NLopt::nlopt
+  NLopt::nlopt_cxx
   ${Boost_LIBRARIES}
 )
 
