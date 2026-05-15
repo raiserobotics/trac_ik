@@ -10,10 +10,7 @@ find_package(kdl_parser REQUIRED)
 find_package(urdf REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(NLopt REQUIRED)
-if(NOT TARGET NLopt::nlopt_cxx)
-  set(NLopt_DIR "${NLopt_DIR}/../nlopt_cxx" CACHE PATH "" FORCE)
-  find_package(NLopt REQUIRED CONFIG)
-endif()
+find_library(NLOPT_CXX_LIBRARY nlopt_cxx REQUIRED)
 
 # Force legacy FindBoost so ${Boost_LIBRARIES} resolves to raw .so paths
 # rather than the Boost::date_time imported target.  Imported targets in
@@ -42,8 +39,8 @@ ament_target_dependencies(trac_ik
 )
 
 target_link_libraries(trac_ik
-  PRIVATE NLopt::nlopt_cxx
-  PRIVATE ${Boost_LIBRARIES}
+  ${NLOPT_CXX_LIBRARY}
+  ${Boost_LIBRARIES}
 )
 
 target_include_directories(trac_ik PUBLIC
