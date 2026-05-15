@@ -11,7 +11,8 @@ find_package(urdf REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(NLopt REQUIRED)
 if(NOT TARGET NLopt::nlopt_cxx)
-  find_package(nlopt_cxx REQUIRED)
+  set(NLopt_DIR "${NLopt_DIR}/../nlopt_cxx" CACHE PATH "" FORCE)
+  find_package(NLopt REQUIRED CONFIG)
 endif()
 
 # Force legacy FindBoost so ${Boost_LIBRARIES} resolves to raw .so paths
