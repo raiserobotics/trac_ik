@@ -42,8 +42,8 @@ ament_target_dependencies(trac_ik
 )
 
 target_link_libraries(trac_ik
-  NLopt::nlopt_cxx
-  ${Boost_LIBRARIES}
+  PRIVATE NLopt::nlopt_cxx
+  PRIVATE ${Boost_LIBRARIES}
 )
 
 target_include_directories(trac_ik PUBLIC
@@ -64,6 +64,6 @@ install(DIRECTORY include/
 
 ament_export_targets(export_trac_ik HAS_LIBRARY_TARGET)
 ament_export_include_directories(include)
-ament_export_dependencies(kdl_parser urdf NLopt)
+ament_export_dependencies(kdl_parser urdf)
 
 ament_package()
