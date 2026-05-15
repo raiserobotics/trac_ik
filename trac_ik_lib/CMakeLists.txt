@@ -10,6 +10,9 @@ find_package(kdl_parser REQUIRED)
 find_package(urdf REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(NLopt REQUIRED)
+if(NOT TARGET NLopt::nlopt_cxx)
+  find_package(nlopt_cxx REQUIRED)
+endif()
 
 # Force legacy FindBoost so ${Boost_LIBRARIES} resolves to raw .so paths
 # rather than the Boost::date_time imported target.  Imported targets in
